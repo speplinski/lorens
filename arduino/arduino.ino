@@ -120,28 +120,28 @@ void loop()
       char c = BTLEserial.read();
       Serial.println( c );
       
-      if( c == '1' ) // dark green
+      if( c == '4' ) // green
       {
         sD.attach( 6 );
         if( closingD ) sD.write( ZERO - SPEED );
         else sD.write( ZERO + SPEED );
       }
       
-      if( c == '2' ) // light green
+      if( c == '2' ) // red
       {
         sC.attach( 5 );
         if( closingC ) sC.write( ZERO - SPEED );
         else sC.write( ZERO + SPEED );
       }
       
-      if( c == '3' ) // red
+      if( c == '3' ) // teal
       {
         sB.attach( 4 );
         if( closingB ) sB.write( ZERO - SPEED );
         else sB.write( ZERO + SPEED );
       }
       
-      if( c == '4' ) // cyan
+      if( c == '1' )
       {
         sA.attach( 3 );
         if( closingA ) sA.write( ZERO - SPEED );

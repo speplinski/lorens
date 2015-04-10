@@ -12,7 +12,6 @@ import UIKit
 
 class ViewController: UIViewController, NRFManagerDelegate {
     
-    @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
@@ -43,15 +42,9 @@ class ViewController: UIViewController, NRFManagerDelegate {
         setupUI()
     }
     
-    var timer1 = NSTimer();
     var timer2 = NSTimer();
     var timer3 = NSTimer();
     var timer4 = NSTimer();
-    
-    func onPress1()
-    {
-        timer1 = NSTimer.scheduledTimerWithTimeInterval( 0.1, target:self, selector: Selector("sendData1"), userInfo: nil, repeats: true )
-    }
     
     func onPress2()
     {
@@ -68,11 +61,6 @@ class ViewController: UIViewController, NRFManagerDelegate {
         timer4 = NSTimer.scheduledTimerWithTimeInterval( 0.1, target:self, selector: Selector("sendData4"), userInfo: nil, repeats: true )
     }
     
-    func onRelease1()
-    {
-        timer1.invalidate()
-    }
-    
     func onRelease2()
     {
         timer2.invalidate()
@@ -86,13 +74,6 @@ class ViewController: UIViewController, NRFManagerDelegate {
     func onRelease4()
     {
         timer4.invalidate()
-    }
-    
-    func sendData1()
-    {
-        let string = "1"
-        let result = self.nrfManager.writeString(string)
-        log("⬆ Sent string: \(string) - Result: \(result)")
     }
     
     func sendData2()
@@ -137,10 +118,6 @@ extension ViewController
 extension ViewController {
     func setupUI()
     {
-        button1.addTarget(self, action: "onPress1", forControlEvents: UIControlEvents.TouchDown)
-        button1.addTarget(self, action: "onRelease1", forControlEvents: UIControlEvents.TouchUpInside)
-        button1.addTarget(self, action: "onRelease1", forControlEvents: UIControlEvents.TouchUpOutside)
-        
         button2.addTarget(self, action: "onPress2", forControlEvents: UIControlEvents.TouchDown)
         button2.addTarget(self, action: "onRelease2", forControlEvents: UIControlEvents.TouchUpInside)
         button2.addTarget(self, action: "onRelease2", forControlEvents: UIControlEvents.TouchUpOutside)
